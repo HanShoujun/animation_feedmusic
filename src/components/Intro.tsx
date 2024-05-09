@@ -228,7 +228,7 @@ export default function Intro() {
       onPan={handlePan}
       onPanEnd={handlePanEnd}
       onWheel={handleWheel}
-      className=" intro_container absolute h-full w-full overflow-auto text-white text-5xl/loose md:text-2xl text-center px-4"
+      className=" intro_container absolute h-full w-full overflow-x-clip overflow-y-auto text-white text-5xl/loose text-center px-4"
       ref={containerRef}
     >
       <div
