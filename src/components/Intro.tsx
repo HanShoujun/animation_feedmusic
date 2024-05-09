@@ -26,7 +26,7 @@ export default function Intro() {
   const targetRef01 = useRef(null);
   const { scrollYProgress: scrollYProgress01 } = useScroll({
     container: containerRef,
-    target: targetRef,
+    target: targetRef01,
     offset: ["start 0.1", "start 0.9"],
   });
   const opacity01 = useTransform(scrollYProgress01, [0, 0.38, 1], [0, 1, 0]);
@@ -35,7 +35,7 @@ export default function Intro() {
   const targetRef02 = useRef(null);
   const { scrollYProgress: scrollYProgress02 } = useScroll({
     container: containerRef,
-    target: targetRef,
+    target: targetRef02,
     offset: ["start 0.1", "start 0.9"],
   });
   const opacity02 = useTransform(scrollYProgress02, [0, 0.38, 1], [0, 1, 0]);
