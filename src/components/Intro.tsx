@@ -7,7 +7,7 @@ import { useAppContext } from "@/contexts/AppProvider";
 export default function Intro() {
   const containerRef = useRef(null);
   const targetRef = useRef(null);
-  const { tabIndex, changeTabIndex, progressFirstTab, setProgressFirstTab } = useAppContext();
+  const { changeTabIndex, progressFirstTab, setProgressFirstTab } = useAppContext();
 
   const { scrollYProgress } = useScroll({
     container: containerRef,

@@ -60,33 +60,34 @@ const pageVariants: Variants = {
       duration: 0,
     },
   },
+  normal: {},
 };
 
 export default function Home() {
   // ** State
-  const [tabIndex, setTabIndex] = useState(0);
+  // const [tabIndex, setTabIndex] = useState(0);
   const [progressFirstTab, setProgressFirstTab] = useState(0);
-  const [startTransition, setStartTransition] = useState(0);
+  // const [startTransition, setStartTransition] = useState(0);
   const [tabData, setTabData] = useState({ tabIndex: 0, startTransition: 0 });
 
   const handleAnimationComplete = () => {
-    // setStartTransition(0);
+    setTabData({ ...tabData, startTransition: 0 });
   };
 
-  const tab1animation = tabIndex != 1 ? "reset" : startTransition == 2 ? "downscreen" : "upscreen";
-  console.log(tab1animation);
+  // const tab1animation = tabIndex != 1 ? "reset" : startTransition == 2 ? "downscreen" : "upscreen";
+  // console.log(tab1animation);
 
   return (
-    <AppContext.Provider value={{ tabIndex, setTabIndex, progressFirstTab, setProgressFirstTab, startTransition, setStartTransition, tabData, setTabData }}>
+    <AppContext.Provider value={{ progressFirstTab, setProgressFirstTab, tabData, setTabData }}>
       <main className=" w-full h-screen bg-gray-600">
         <Navigator />
         <div className=" relative w-full h-screen overflow-hidden z-10">
           <motion.div
             initial={false}
-            animate={tabIndex != 0 ? "reset" : "downscreen"}
+            animate={tabData.tabIndex != 0 ? "reset" : "downscreen"}
             variants={pageVariants}
             className=" absolute overflow-hidden w-full h-screen"
-            style={{ display: tabIndex == 0 ? "block" : "none" }}
+            style={{ display: tabData.tabIndex == 0 ? "block" : "none" }}
           >
             <div className="absolute w-full h-screen overflow-hidden">
               <div className=" absolute bg-white w-full h-3 top-0 left-0" />
@@ -106,40 +107,28 @@ export default function Home() {
           </motion.div>
           <motion.div
             initial={false}
-            animate={tabIndex != 1 ? "reset" : "upscreen"}
+            animate={tabData.tabIndex != 1 ? "reset" : tabData.startTransition == 0 ? "normal" : tabData.startTransition == 1 ? "downscreen" : "upscreen"}
             variants={pageVariants}
             className=" absolute top-0 left-0 w-full h-screen overflow-hidden bg-black"
-            style={{ display: tabIndex == 1 ? "block" : "none" }}
+            style={{ display: tabData.tabIndex == 1 ? "block" : "none" }}
           ></motion.div>
           <motion.div
             initial={false}
-            animate={tabIndex != 2 ? "reset" : "upscreen"}
+            animate={tabData.tabIndex != 2 ? "reset" : "upscreen"}
             variants={pageVariants}
             className=" absolute top-0 left-0 w-full h-screen overflow-hidden bg-blue"
-            style={{ display: tabIndex == 2 ? "block" : "none" }}
+            style={{ display: tabData.tabIndex == 2 ? "block" : "none" }}
           ></motion.div>
           <motion.div
             initial={false}
-            animate={tabIndex != 3 ? "reset" : "upscreen"}
+            animate={tabData.tabIndex != 3 ? "reset" : "upscreen"}
             variants={pageVariants}
             className=" absolute top-0 left-0 w-full h-screen overflow-hidden bg-yellow"
-            style={{ display: tabIndex == 3 ? "block" : "none" }}
+            style={{ display: tabData.tabIndex == 3 ? "block" : "none" }}
           ></motion.div>
-          <motion.div initial={false} animate={tabData.startTransition == 2 ? "upscreen" : "downscreen"} onAnimationComplete={handleAnimationComplete}>
-            <motion.div
-              custom={1}
-              variants={variants}
-              exit={"reset"}
-              className=" blue_block  z-40 absolute w-full h-full top-0 left-0 -translate-y-full"
-              style={{ backgroundColor: "rgb(53, 1, 127)" }}
-            />
-            <motion.div
-              custom={2}
-              variants={variants}
-              exit={"reset"}
-              className=" white_block  z-40 absolute w-full h-full top-0 left-0 -translate-y-full"
-              style={{ backgroundColor: "rgb(230, 230, 230)" }}
-            />
+          <motion.div initial={false} animate={tabData.startTransition == 0 ? "reset" : tabData.startTransition == 2 ? "upscreen" : "downscreen"} onAnimationComplete={handleAnimationComplete}>
+            <motion.div custom={1} variants={variants} className=" blue_block  z-40 absolute w-full h-full top-0 left-0 -translate-y-full" style={{ backgroundColor: "rgb(53, 1, 127)" }} />
+            <motion.div custom={2} variants={variants} className=" white_block  z-40 absolute w-full h-full top-0 left-0 -translate-y-full" style={{ backgroundColor: "rgb(230, 230, 230)" }} />
           </motion.div>
         </div>
       </main>

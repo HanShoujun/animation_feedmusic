@@ -9,23 +9,23 @@ export type TabData = {
 
 export type IState = {
   progressFirstTab: number;
-  tabIndex: number;
-  setTabIndex: (tabIndex: number) => void;
+  // tabIndex: number;
+  // setTabIndex: (tabIndex: number) => void;
   setProgressFirstTab: (tabIndex: number) => void;
-  setStartTransition: (tabIndex: number) => void;
-  startTransition: number;
+  // setStartTransition: (tabIndex: number) => void;
+  // startTransition: number;
   tabData: TabData;
   setTabData: (tabData: TabData) => void;
 };
 
 // ** Create Context
 export const AppContext = createContext<IState>({
-  setTabIndex: () => null,
-  tabIndex: 0,
+  // setTabIndex: () => null,
+  // tabIndex: 0,
   progressFirstTab: 0,
   setProgressFirstTab: () => null,
-  startTransition: 0,
-  setStartTransition: () => null,
+  // startTransition: 0,
+  // setStartTransition: () => null,
   tabData: { tabIndex: 0, startTransition: 0 },
   setTabData: () => null,
 });
@@ -44,7 +44,15 @@ export const useAppContext = () => {
   if (!context) {
     throw new Error("useTheme must be used within a ThemeProvider");
   }
-  const { tabIndex, setTabIndex, progressFirstTab, setProgressFirstTab, setStartTransition, tabData, setTabData } = context;
+  const {
+    // tabIndex,
+    // setTabIndex,
+    progressFirstTab,
+    setProgressFirstTab,
+    // setStartTransition,
+    tabData,
+    setTabData,
+  } = context;
 
   const changeTabIndex = (index: number) => {
     if (tabData.tabIndex == index) {
