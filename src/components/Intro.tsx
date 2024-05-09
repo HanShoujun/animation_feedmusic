@@ -206,6 +206,9 @@ export default function Intro() {
       console.log("向下滑动");
     } else {
       console.log("向上滑动");
+      if (progressFirstTab >= 99.96) {
+        changeTabIndex(1);
+      }
     }
   };
 
