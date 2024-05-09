@@ -5,6 +5,7 @@ import { AppContext } from "@/contexts/AppProvider";
 import { use, useEffect, useState } from "react";
 import { motion, useAnimation, useInView, useScroll, useTransform, useMotionValueEvent, Variants, AnimatePresence, useAnimate, useAnimationControls } from "framer-motion";
 import Card from "@/components/Card";
+import "./page.css";
 
 const variants: Variants = {
   upscreen: (index = 1) => ({
@@ -94,7 +95,7 @@ export default function Home() {
               <div className=" absolute bg-white h-full w-3 top-0 right-0" />
               <div className=" absolute bg-white w-full h-3 bottom-0 left-0" />
               <div className=" absolute bg-white h-full w-3 top-0 left-0" />
-              <div className=" absolute w-full h-screen -z-10">
+              <div className=" video_bg absolute w-full h-screen -z-10">
                 <div className=" absolute h-full w-full opacity-30 bg-black" />
                 <video className=" mt-0 object-cover w-full" src="/videos/intro.mp4" autoPlay loop muted playsInline style={{ minWidth: "1587px", height: "892px" }} preload="metadata">
                   <source src="/videos/intro.mp4" />

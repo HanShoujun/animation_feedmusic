@@ -1,0 +1,8 @@
+.nav_container {
+}
+
+@media screen and (max-width: 768px) {
+  .nav_container {
+    display: none;
+  }
+}

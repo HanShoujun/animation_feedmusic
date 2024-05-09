@@ -3,6 +3,7 @@ import { motion, useAnimation, PanInfo, useScroll, useTransform, useMotionValueE
 import { WheelEventHandler, useEffect, useRef, useState, WheelEvent } from "react";
 import IntroItem from "./IntroItem";
 import { useAppContext } from "@/contexts/AppProvider";
+import "./Intro.css";
 
 export default function Intro() {
   const containerRef = useRef(null);
@@ -223,7 +224,13 @@ export default function Intro() {
   };
 
   return (
-    <motion.div onPan={handlePan} onPanEnd={handlePanEnd} onWheel={handleWheel} className=" absolute h-full w-full overflow-auto text-white text-5xl/loose text-center px-4" ref={containerRef}>
+    <motion.div
+      onPan={handlePan}
+      onPanEnd={handlePanEnd}
+      onWheel={handleWheel}
+      className=" intro_container absolute h-full w-full overflow-auto text-white text-5xl/loose md:text-2xl text-center px-4"
+      ref={containerRef}
+    >
       <div
         className=""
         style={{

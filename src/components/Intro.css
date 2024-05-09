@@ -1,0 +1,9 @@
+.intro_container {
+}
+
+@media screen and (max-width: 768px) {
+  .intro_container {
+    font-size: 1.2rem/* 24px */;
+    line-height: 2.8rem/* 32px */;
+  }
+}
