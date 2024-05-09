@@ -32,7 +32,6 @@ export default function Home() {
             </div>
             <div className="absolute w-full overflow-auto h-full">
               <Intro />
-              <div style={{ height: "100rem" }}>Hello</div>
             </div>
           </div>
         </div>
