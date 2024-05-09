@@ -1,6 +1,6 @@
 "use client";
-import { motion, useAnimation, useInView, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { motion, useAnimation, PanInfo, useScroll, useTransform, useMotionValueEvent, useMotionValue, useSpring } from "framer-motion";
+import { WheelEventHandler, useEffect, useRef, useState, WheelEvent } from "react";
 import IntroItem from "./IntroItem";
 import { useAppContext } from "@/contexts/AppProvider";
 
@@ -14,13 +14,10 @@ export default function Intro() {
     target: targetRef,
     offset: ["start center", "end center"],
   });
-  const progress = useTransform(scrollYProgress, [0, 0.03, 0.97, 1], [0, 0, 1, 1]);
+  const progress = useTransform(scrollYProgress, [0, 0.03, 1], [0, 0, 1]);
 
   useMotionValueEvent(progress, "change", (latest) => {
     setProgressFirstTab(latest * 100);
-    if (latest == 1) {
-      changeTabIndex(1);
-    }
   });
 
   const targetRef01 = useRef(null);
@@ -194,13 +191,44 @@ export default function Intro() {
   const opacity19 = useTransform(scrollYProgress19, [0, 0.38, 1], [0, 1, 0]);
   const scale19 = useTransform(scrollYProgress19, [0, 0.38, 1], [1.4, 1, 0.5]);
 
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const handlePan = (event: PointerEvent, info: PanInfo) => {
+    x.set(info.offset.x);
+    y.set(info.offset.y);
+  };
+
+  const handlePanEnd = (event: PointerEvent, info: PanInfo) => {
+    const { velocity } = info;
+    if (velocity.y > 0) {
+      console.log("向下滑动");
+    } else {
+      console.log("向上滑动");
+    }
+  };
+
+  const [deltaY, setDeltaY] = useState(0);
+
+  const handleWheel: WheelEventHandler<HTMLDivElement> = (event: WheelEvent<HTMLDivElement>) => {
+    setDeltaY(event.deltaY);
+    if (event.deltaY > 16) {
+      console.log("向下滚动", event.deltaY, progressFirstTab);
+      if (progressFirstTab >= 100) {
+        changeTabIndex(1);
+      }
+    } else {
+      console.log("向上滚动");
+    }
+  };
+
   return (
-    <div className=" absolute h-full w-full overflow-auto text-white text-5xl/loose text-center px-4" ref={containerRef}>
+    <motion.div onPan={handlePan} onPanEnd={handlePanEnd} onWheel={handleWheel} className=" absolute h-full w-full overflow-auto text-white text-5xl/loose text-center px-4" ref={containerRef}>
       <div
         className=""
         style={{
-          marginTop: "30%",
-          marginBottom: "30%",
+          marginTop: "50vh",
+          marginBottom: "50vh",
         }}
         ref={targetRef}
       >
@@ -415,6 +443,6 @@ export default function Intro() {
           Feed is a digital mechanism of <strong>trust</strong>
         </motion.p>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -55,6 +55,9 @@ export const useAppContext = () => {
   } = context;
 
   const changeTabIndex = (index: number) => {
+    if (index < 0 || index > 3) {
+      return;
+    }
     if (tabData.tabIndex == index) {
       return;
     }

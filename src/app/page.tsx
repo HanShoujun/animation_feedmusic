@@ -4,6 +4,7 @@ import Navigator from "@/components/Navigator";
 import { AppContext } from "@/contexts/AppProvider";
 import { use, useEffect, useState } from "react";
 import { motion, useAnimation, useInView, useScroll, useTransform, useMotionValueEvent, Variants, AnimatePresence, useAnimate, useAnimationControls } from "framer-motion";
+import Card from "@/components/Card";
 
 const variants: Variants = {
   upscreen: (index = 1) => ({
@@ -110,21 +111,27 @@ export default function Home() {
             variants={pageVariants}
             className=" absolute top-0 left-0 w-full h-screen overflow-hidden bg-black"
             style={{ display: tabData.tabIndex == 1 ? "block" : "none" }}
-          ></motion.div>
+          >
+            <Card tabIndex={1} />
+          </motion.div>
           <motion.div
             initial={false}
             animate={tabData.tabIndex != 2 ? "reset" : "upscreen"}
             variants={pageVariants}
             className=" absolute top-0 left-0 w-full h-screen overflow-hidden bg-blue"
             style={{ display: tabData.tabIndex == 2 ? "block" : "none" }}
-          ></motion.div>
+          >
+            <Card tabIndex={2} />
+          </motion.div>
           <motion.div
             initial={false}
             animate={tabData.tabIndex != 3 ? "reset" : "upscreen"}
             variants={pageVariants}
             className=" absolute top-0 left-0 w-full h-screen overflow-hidden bg-yellow"
             style={{ display: tabData.tabIndex == 3 ? "block" : "none" }}
-          ></motion.div>
+          >
+            <Card tabIndex={3} />
+          </motion.div>
           <motion.div initial={false} animate={tabData.startTransition == 0 ? "reset" : tabData.startTransition == 2 ? "upscreen" : "downscreen"} onAnimationComplete={handleAnimationComplete}>
             <motion.div custom={2} variants={variants} className=" blue_block  z-40 absolute w-full h-full top-0 left-0 -translate-y-full" style={{ backgroundColor: "rgb(53, 1, 127)" }} />
             <motion.div custom={1} variants={variants} className=" white_block  z-40 absolute w-full h-full top-0 left-0 -translate-y-full" style={{ backgroundColor: "rgb(230, 230, 230)" }} />
