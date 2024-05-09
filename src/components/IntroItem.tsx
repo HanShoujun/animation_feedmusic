@@ -9,7 +9,7 @@ type IntroItemProps = React.PropsWithChildren<{
 export default function IntroItem({ containerRef, children }: IntroItemProps) {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
-    container: containerRef,
+    // container: containerRef,
     target: targetRef,
     offset: ["start 0.1", "start 0.9"],
   });

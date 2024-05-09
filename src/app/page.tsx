@@ -81,15 +81,15 @@ export default function Home() {
     <AppContext.Provider value={{ progressFirstTab, setProgressFirstTab, tabData, setTabData }}>
       <main className=" w-full h-screen bg-gray-600">
         <Navigator />
-        <div className=" relative w-full h-screen overflow-hidden z-10">
+        <div className=" relative w-full h-screen  z-10">
           <motion.div
             initial={false}
             animate={tabData.tabIndex != 0 ? "reset" : "downscreen"}
             variants={pageVariants}
-            className=" absolute overflow-hidden w-full h-screen"
+            className=" absolute  w-full h-screen"
             style={{ display: tabData.tabIndex == 0 ? "block" : "none" }}
           >
-            <div className="absolute w-full h-screen overflow-hidden">
+            <div className="absolute w-full h-screen ">
               <div className=" absolute bg-white w-full h-3 top-0 left-0" />
               <div className=" absolute bg-white h-full w-3 top-0 right-0" />
               <div className=" absolute bg-white w-full h-3 bottom-0 left-0" />
