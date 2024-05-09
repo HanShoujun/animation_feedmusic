@@ -215,7 +215,7 @@ export default function Intro() {
     setDeltaY(event.deltaY);
     if (event.deltaY > 16) {
       console.log("向下滚动", event.deltaY, progressFirstTab);
-      if (progressFirstTab >= 100) {
+      if (progressFirstTab >= 99.96) {
         changeTabIndex(1);
       }
     } else {
