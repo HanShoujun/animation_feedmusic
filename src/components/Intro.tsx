@@ -32,6 +32,15 @@ export default function Intro() {
   const opacity01 = useTransform(scrollYProgress01, [0, 0.38, 1], [0, 1, 0]);
   const scale01 = useTransform(scrollYProgress01, [0, 0.38, 1], [1.4, 1, 0.5]);
 
+  const targetRef02 = useRef(null);
+  const { scrollYProgress: scrollYProgress02 } = useScroll({
+    container: containerRef,
+    target: targetRef,
+    offset: ["start 0.1", "start 0.9"],
+  });
+  const opacity02 = useTransform(scrollYProgress02, [0, 0.38, 1], [0, 1, 0]);
+  const scale02 = useTransform(scrollYProgress02, [0, 0.38, 1], [1.4, 1, 0.5]);
+
   return (
     <div className=" absolute h-full w-full overflow-auto text-white text-5xl/loose text-center px-4" ref={containerRef}>
       <div
@@ -48,12 +57,20 @@ export default function Intro() {
             scale: scale01,
             transform: "translate3d(0, 0, 0)",
           }}
-          ref={targetRef}
+          ref={targetRef01}
         >
           When you want something,
         </motion.p>
-        <IntroItem containerRef={containerRef}>When you want something,</IntroItem>
-        <IntroItem containerRef={containerRef}>all the universe conspires</IntroItem>
+        <motion.p
+          style={{
+            opacity: opacity02,
+            scale: scale02,
+            transform: "translate3d(0, 0, 0)",
+          }}
+          ref={targetRef02}
+        >
+          all the universe conspires
+        </motion.p>
         <IntroItem containerRef={containerRef}>in helping you to achieve it.</IntroItem>
         <IntroItem containerRef={containerRef}>
           <strong>Paulo Coelho</strong>

@@ -6,7 +6,7 @@ type IntroItemProps = React.PropsWithChildren<{
   containerRef: MutableRefObject<null>;
 }>;
 
-export default function Intro({ containerRef, children }: IntroItemProps) {
+export default function IntroItem({ containerRef, children }: IntroItemProps) {
   const targetRef = useRef(null);
   const { scrollYProgress } = useScroll({
     container: containerRef,
