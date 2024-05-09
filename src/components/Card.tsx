@@ -18,8 +18,8 @@ export default function Card({ tabIndex }: IntroItemProps) {
   };
 
   const handlePanEnd = (event: PointerEvent, info: PanInfo) => {
-    const { velocity } = info;
-    if (velocity.y > 0) {
+    const { delta } = info;
+    if (delta.y > 0) {
       console.log("向下滑动");
       changeTabIndex(tabIndex - 1);
     } else {

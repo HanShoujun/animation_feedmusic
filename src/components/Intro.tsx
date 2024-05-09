@@ -201,11 +201,11 @@ export default function Intro() {
   };
 
   const handlePanEnd = (event: PointerEvent, info: PanInfo) => {
-    const { velocity } = info;
-    if (velocity.y > 0) {
-      console.log("向下滑动");
+    const { delta } = info;
+    if (delta.y > 0) {
+      console.log("向下滑动", delta.y);
     } else {
-      console.log("向上滑动");
+      console.log("向上滑动", delta.y, progressFirstTab);
       if (progressFirstTab >= 99.96) {
         changeTabIndex(1);
       }
