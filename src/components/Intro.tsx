@@ -17,11 +17,20 @@ export default function Intro() {
   const progress = useTransform(scrollYProgress, [0, 0.03, 0.97, 1], [0, 0, 1, 1]);
 
   useMotionValueEvent(progress, "change", (latest) => {
-    setProgressFirstTab(latest*100);
+    setProgressFirstTab(latest * 100);
     if (latest == 1) {
       changeTabIndex(1);
     }
   });
+
+  const targetRef01 = useRef(null);
+  const { scrollYProgress: scrollYProgress01 } = useScroll({
+    container: containerRef,
+    target: targetRef,
+    offset: ["start 0.1", "start 0.9"],
+  });
+  const opacity01 = useTransform(scrollYProgress01, [0, 0.38, 1], [0, 1, 0]);
+  const scale01 = useTransform(scrollYProgress01, [0, 0.38, 1], [1.4, 1, 0.5]);
 
   return (
     <div className=" absolute h-full w-full overflow-auto text-white text-5xl/loose text-center px-4" ref={containerRef}>
@@ -33,6 +42,16 @@ export default function Intro() {
         }}
         ref={targetRef}
       >
+        <motion.p
+          style={{
+            opacity: opacity01,
+            scale: scale01,
+            transform: "translate3d(0, 0, 0)",
+          }}
+          ref={targetRef}
+        >
+          When you want something,
+        </motion.p>
         <IntroItem containerRef={containerRef}>When you want something,</IntroItem>
         <IntroItem containerRef={containerRef}>all the universe conspires</IntroItem>
         <IntroItem containerRef={containerRef}>in helping you to achieve it.</IntroItem>

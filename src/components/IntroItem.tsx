@@ -14,13 +14,7 @@ export default function Intro({ containerRef, children }: IntroItemProps) {
     offset: ["start 0.1", "start 0.9"],
   });
   const opacity = useTransform(scrollYProgress, [0, 0.38, 1], [0, 1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 0.38, 1], [1.4, 1, 0.5], {
-    // clamp: false,
-  });
-
-  // useMotionValueEvent(scrollYProgress, "change", (latest) => {
-  //   console.log("scrollYProgress:" + latest);
-  // });
+  const scale = useTransform(scrollYProgress, [0, 0.38, 1], [1.4, 1, 0.5]);
 
   return (
     <motion.p
