@@ -60,7 +60,7 @@ export default function Intro() {
         <p>The difference</p>
         <p>between those numbers</p>
         <p>
-          "is " <a href="">trust</a>
+          &quot;is &quot; <a href="">trust</a>
         </p>
         <p>
           <br />
