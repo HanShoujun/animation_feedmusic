@@ -27,7 +27,9 @@ export default function Home() {
               <div className=" absolute bg-white h-full w-3 top-0 left-0" />
               <div className=" absolute w-full h-screen -z-10">
                 <div className=" absolute h-full w-full opacity-30 bg-black" />
-                <video className=" mt-0 object-cover" style={{ width: "1587px", height: "892px" }} src="videos/intro.mp4" loop autoPlay />
+                <video className=" mt-0 object-cover w-full" src="/videos/intro.mp4" autoPlay loop muted playsInline style={{ minWidth: "1587px", height: "892px" }} preload="metadata">
+                  <source src="/videos/intro.mp4" />
+                </video>
               </div>
             </div>
             <div className="absolute w-full overflow-auto h-full">
