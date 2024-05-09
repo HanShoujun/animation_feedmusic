@@ -1,0 +1,5 @@
+
+.blue_block .animate_up {
+  transform: translateY(120%);
+  animation: 1.5s ease-in-out;
+}
