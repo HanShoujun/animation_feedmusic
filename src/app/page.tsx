@@ -11,9 +11,9 @@ const variants: Variants = {
     zIndex: index == 1 ? 10 : 20,
     display: "block",
     transition: {
-      duration: 1,
+      duration: 0.8,
       delay: index == 1 ? 0 : 0.2,
-      type: "linear",
+      type: "ease-in",
     },
   }),
   downscreen: (index = 1) => ({
@@ -21,9 +21,9 @@ const variants: Variants = {
     zIndex: index == 1 ? 20 : 10,
     display: "block",
     transition: {
-      duration: 1,
+      duration: 0.8,
       delay: index == 1 ? 0.2 : 0,
-      type: "linear",
+      type: "ease-in",
     },
   }),
   reset: {
@@ -39,24 +39,23 @@ const pageVariants: Variants = {
     translateY: ["100%", "0%"],
     display: "block",
     transition: {
-      duration: 1,
+      duration: 0.8,
       delay: 0.2,
-      type: "linear",
+      type: "ease-in",
     },
   }),
   downscreen: (index = 1) => ({
     translateY: ["-100%", "0%"],
     display: "block",
     transition: {
-      duration: 1,
+      duration: 0.8,
       delay: 0.2,
-      type: "linear",
+      type: "ease-in",
     },
   }),
   reset: {
     display: "none",
     transition: {
-      // delay: 0.5,
       duration: 0,
     },
   },
@@ -127,8 +126,8 @@ export default function Home() {
             style={{ display: tabData.tabIndex == 3 ? "block" : "none" }}
           ></motion.div>
           <motion.div initial={false} animate={tabData.startTransition == 0 ? "reset" : tabData.startTransition == 2 ? "upscreen" : "downscreen"} onAnimationComplete={handleAnimationComplete}>
-            <motion.div custom={1} variants={variants} className=" blue_block  z-40 absolute w-full h-full top-0 left-0 -translate-y-full" style={{ backgroundColor: "rgb(53, 1, 127)" }} />
-            <motion.div custom={2} variants={variants} className=" white_block  z-40 absolute w-full h-full top-0 left-0 -translate-y-full" style={{ backgroundColor: "rgb(230, 230, 230)" }} />
+            <motion.div custom={2} variants={variants} className=" blue_block  z-40 absolute w-full h-full top-0 left-0 -translate-y-full" style={{ backgroundColor: "rgb(53, 1, 127)" }} />
+            <motion.div custom={1} variants={variants} className=" white_block  z-40 absolute w-full h-full top-0 left-0 -translate-y-full" style={{ backgroundColor: "rgb(230, 230, 230)" }} />
           </motion.div>
         </div>
       </main>
