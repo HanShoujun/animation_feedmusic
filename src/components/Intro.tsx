@@ -203,9 +203,9 @@ export default function Intro() {
   const handlePanEnd = (event: PointerEvent, info: PanInfo) => {
     const { delta } = info;
     if (delta.y > 0) {
-      console.log("向下滑动", delta.y);
+      
     } else {
-      console.log("向上滑动", delta.y, progressFirstTab);
+      
       if (progressFirstTab >= 99.96) {
         changeTabIndex(1);
       }
@@ -217,12 +217,11 @@ export default function Intro() {
   const handleWheel: WheelEventHandler<HTMLDivElement> = (event: WheelEvent<HTMLDivElement>) => {
     setDeltaY(event.deltaY);
     if (event.deltaY > 16) {
-      console.log("向下滚动", event.deltaY, progressFirstTab);
       if (progressFirstTab >= 99.96) {
         changeTabIndex(1);
       }
     } else {
-      console.log("向上滚动");
+      
     }
   };
 
