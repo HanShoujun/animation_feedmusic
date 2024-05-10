@@ -12,3 +12,13 @@
     }
   }
 }
+
+.note_container {
+
+}
+
+@media screen and (max-width: 980px) {
+  .note_container {
+    display: none;
+  }
+}

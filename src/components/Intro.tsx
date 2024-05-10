@@ -1,5 +1,5 @@
 "use client";
-import { motion, useAnimation, PanInfo, useScroll, useTransform, useMotionValueEvent, useMotionValue, useSpring } from "framer-motion";
+import { motion, Variants, PanInfo, useScroll, useTransform, useMotionValueEvent, useMotionValue, useSpring } from "framer-motion";
 import { WheelEventHandler, useEffect, useRef, useState, WheelEvent } from "react";
 import IntroItem from "./IntroItem";
 import { useAppContext } from "@/contexts/AppProvider";
@@ -203,10 +203,8 @@ export default function Intro() {
   const handlePanEnd = (event: PointerEvent, info: PanInfo) => {
     const { delta } = info;
     if (delta.y > 0) {
-      
     } else {
-      
-      if (progressFirstTab >= 99.96) {
+      if (progressFirstTab >= 99) {
         changeTabIndex(1);
       }
     }
@@ -221,7 +219,6 @@ export default function Intro() {
         changeTabIndex(1);
       }
     } else {
-      
     }
   };
 

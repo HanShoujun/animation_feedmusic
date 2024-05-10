@@ -7,6 +7,23 @@ import { motion, useAnimation, useInView, useScroll, useTransform, useMotionValu
 import Card from "@/components/Card";
 import "./page.css";
 
+const noteVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    transition: {
+      duration: 0.5,
+      type: "ease-in",
+    },
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      type: "ease-in",
+    },
+  },
+};
+
 const variants: Variants = {
   upscreen: (index = 1) => ({
     translateY: ["100%", "-100%"],
@@ -75,9 +92,6 @@ export default function Home() {
     setTabData({ ...tabData, startTransition: 0 });
   };
 
-  // const tab1animation = tabIndex != 1 ? "reset" : startTransition == 2 ? "downscreen" : "upscreen";
-  // console.log(tab1animation);
-
   return (
     <AppContext.Provider value={{ progressFirstTab, setProgressFirstTab, tabData, setTabData }}>
       <main className=" w-full h-screen bg-gray-600">
@@ -105,6 +119,23 @@ export default function Home() {
             <div className="absolute w-full overflow-auto h-full">
               <Intro />
             </div>
+            <motion.div
+              initial={false}
+              variants={noteVariants}
+              animate={progressFirstTab < 8 ? "show" : "hidden"}
+              className=" note_container absolute bottom-0 left-0 text-xs text-white p-5 text-left "
+              style={{ width: "420px" }}
+            >
+              <p>
+                Feed is an intelligent property rights and payments platform, using intelligent software and digital security that goes well beyond 'military-grade' to give users true ownership of
+                their data and IP.
+              </p>
+              <br />
+              <p>
+                Feed facilitates trusted exchanges of users' progressively-perfecting data assets with businesses, researchers, and governments in a <b>trusted</b>, audited, and independently
+                verifiable manner; on their own terms and conditions.
+              </p>
+            </motion.div>
           </motion.div>
           <motion.div
             initial={false}
