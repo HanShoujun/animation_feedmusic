@@ -127,12 +127,12 @@ export default function Home() {
               style={{ width: "420px" }}
             >
               <p>
-                Feed is an intelligent property rights and payments platform, using intelligent software and digital security that goes well beyond 'military-grade' to give users true ownership of
+                Feed is an intelligent property rights and payments platform, using intelligent software and digital security that goes well beyond &apos;military-grade&apos; to give users true ownership of
                 their data and IP.
               </p>
               <br />
               <p>
-                Feed facilitates trusted exchanges of users' progressively-perfecting data assets with businesses, researchers, and governments in a <b>trusted</b>, audited, and independently
+                Feed facilitates trusted exchanges of users progressively-perfecting data assets with businesses, researchers, and governments in a <b>trusted</b>, audited, and independently
                 verifiable manner; on their own terms and conditions.
               </p>
             </motion.div>
