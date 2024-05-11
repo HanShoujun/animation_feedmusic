@@ -2,7 +2,7 @@
   
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 768px) {
   .video_bg {
     background-image: url('/images/intro-background.jpg');
     background-size: cover;
